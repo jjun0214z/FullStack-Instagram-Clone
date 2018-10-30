@@ -30,7 +30,7 @@
 * SCSS
 * ES6
 
-## 챕터별 메모
+## 챕터별 주제
 
 ### Django: Backend
 
