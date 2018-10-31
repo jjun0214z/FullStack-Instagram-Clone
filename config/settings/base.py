@@ -40,7 +40,14 @@ USE_TZ = True
 
 # default='postgres://localhost/jevtagram'
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://postgres:post!@#@localhost:5432/postgres'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'post!@#',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
