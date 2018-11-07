@@ -19,6 +19,10 @@ urlpatterns = [
         "users/",
         include("jevtagram.users.urls", namespace="users"),
     ),
+    path(
+        "images/",
+        include("jevtagram.images.urls", namespace="images"),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(
