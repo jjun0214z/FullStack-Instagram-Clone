@@ -1,36 +1,58 @@
 # from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from . import models, serializers
 
 # Create your views here.
 
-class ListAllImages(APIView):
+class Feed(APIView):
 
     def get(self, request, format=None):
 
-        all_images = models.Image.objects.all()
+        user = request.user
 
-        serializer = serializers.ImageSerializer(all_images, many=True)
+        following_users = user.following.all()
 
-        return Response(data = serializer.data)
+        image_list = []
 
-class ListAllComments(APIView):
+        for following_user in following_users:
 
-    def get(self, request, format=None):
+            user_images = following_user.images.all()[:2]
 
-        all_comments = models.Comment.objects.all()
+            for image in user_images:
+                image_list.append(image)
 
-        serializer = serializers.CommentSerializer(all_comments, many=True)
+        sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
 
-        return Response(data = serializer.data)
+        serializer = serializers.ImageSerializer(sorted_list, many=True)
 
-class ListAllLikes(APIView):
+        return Response(serializer.data)
 
-    def get(self, request, format=None):
+class LikeImage(APIView):
 
-        all_likes = models.Like.objects.all()
+    def get(self, request, id, format=None):
 
-        serializer = serializers.LikeSerializer(all_likes, many=True)
+        user = request.user
 
-        return Response(data = serializer.data)
+        try:
+            found_image = models.Image.objects.get(id=id)
+
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            preexisiting_like = models.Like.objects.get(
+                creator = user,
+                image = found_image
+            )
+            preexisiting_like.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except models.Like.DoesNotExist:
+            new_like = models.Like.objects.create(
+                creator = user,
+                image = found_image
+            )
+            new_like.save()
+            return Response(status=status.HTTP_201_CREATED)
