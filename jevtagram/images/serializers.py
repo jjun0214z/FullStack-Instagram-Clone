@@ -13,7 +13,7 @@ class FeeduserSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
-    creator = FeeduserSerializer()
+    creator = FeeduserSerializer(read_only=True)
 
     class Meta:
         model = models.Comment
@@ -23,11 +23,10 @@ class CommentSerializer(serializers.ModelSerializer):
             'creator'
         ]
 
-class LikeSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Like
-        fields = '__all__'
+# class LikeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = models.Like
+#         fields = '__all__'
 
 class ImageSerializer(serializers.ModelSerializer):
 
