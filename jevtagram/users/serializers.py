@@ -1,8 +1,25 @@
 from rest_framework import serializers
 from . import models
+from jevtagram.images import serializers as images_serializers
 
+class UserProfileSerializer(serializers.ModelSerializer):
 
-class ExploreUserSerializer(serializers.ModelSerializer):
+    images = images_serializers.UserProFileImagesSerializer(many=True)
+
+    class Meta:
+        model = models.User
+        fields = [
+            'username',
+            'name',
+            'bio',
+            'website',
+            'post_count',
+            'followers_count',
+            'following_count',
+            'images'
+        ]
+
+class ListUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User

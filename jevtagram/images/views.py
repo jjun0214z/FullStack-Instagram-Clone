@@ -51,7 +51,7 @@ class LikeImage(APIView):
             new_like.save()
             return Response(status=status.HTTP_201_CREATED)
 
-class Un_LikeImage(APIView):
+class UnLikeImage(APIView):
 
     def delete(self, request, like_id, format=None):
 
@@ -96,7 +96,7 @@ class CommentOnImage(APIView):
 
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class Delete_Comment(APIView):
+class DeleteComment(APIView):
 
     def delete(self, request, comment_id, format=None):
 

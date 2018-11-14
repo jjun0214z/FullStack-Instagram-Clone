@@ -2,6 +2,17 @@ from rest_framework import serializers
 from . import models
 from jevtagram.users import models as user_models
 
+class UserProFileImagesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = [
+            'id',
+            'file',
+            'like_count',
+            'comment_count'
+        ]
+
 class FeeduserSerializer(serializers.ModelSerializer):
 
     class Meta:
