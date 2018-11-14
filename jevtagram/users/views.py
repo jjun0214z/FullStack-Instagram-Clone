@@ -1,52 +1,43 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from . import models, serializers
 
-User = get_user_model()
+class ExploreUsers(APIView):
 
+    def get(self, request, format=True):
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+        last_five = models.User.objects.all().order_by('-date_joined')[:5]
+        serializer = serializers.ExploreUserSerializer(last_five, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
+class FollowUser(APIView):
 
+    def post(self, request, user_id, format=True):
 
-user_detail_view = UserDetailView.as_view()
+        user = request.user
 
+        try:
+            user_to_follow = models.User.objects.get(id=user_id)
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-class UserListView(LoginRequiredMixin, ListView):
-
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
-
-
-user_list_view = UserListView.as_view()
-
-
-class UserUpdateView(LoginRequiredMixin, UpdateView):
-
-    model = User
-    fields = ["name"]
-
-    def get_success_url(self):
-        return reverse("users:detail", kwargs={"username": self.request.user.username})
-
-    def get_object(self):
-        return User.objects.get(username=self.request.user.username)
+        user.following.add(user_to_follow)
+        user.save()
+        return Response(status=status.HTTP_200_OK)
 
 
-user_update_view = UserUpdateView.as_view()
+class UnFollowUser(APIView):
 
+    def post(self, request, user_id, format=True):
 
-class UserRedirectView(LoginRequiredMixin, RedirectView):
+        user = request.user
 
-    permanent = False
+        try:
+            user_to_follow = models.User.objects.get(id=user_id)
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-    def get_redirect_url(self):
-        return reverse("users:detail", kwargs={"username": self.request.user.username})
-
-
-user_redirect_view = UserRedirectView.as_view()
+        user.following.remove(user_to_follow)
+        user.save()
+        return Response(status=status.HTTP_200_OK)
