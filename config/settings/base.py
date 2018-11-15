@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'taggit',
 ]
 LOCAL_APPS = [
     'jevtagram.users.apps.UsersAppConfig',
@@ -247,3 +248,4 @@ SOCIALACCOUNT_ADAPTER = 'jevtagram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True

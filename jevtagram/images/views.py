@@ -26,12 +26,12 @@ class Feed(APIView):
 
 class LikeImage(APIView):
 
-    def post(self, request, like_id, format=None):
+    def post(self, request, image_id, format=None):
 
         user = request.user
 
         try:
-            found_image = models.Image.objects.get(id=like_id)
+            found_image = models.Image.objects.get(id=image_id)
 
         except models.Image.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -53,12 +53,12 @@ class LikeImage(APIView):
 
 class UnLikeImage(APIView):
 
-    def delete(self, request, like_id, format=None):
+    def delete(self, request, image_id, format=None):
 
         user = request.user
 
         try:
-            found_image = models.Image.objects.get(id=like_id)
+            found_image = models.Image.objects.get(id=image_id)
         except models.Image.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -76,12 +76,12 @@ class UnLikeImage(APIView):
 
 class CommentOnImage(APIView):
 
-    def post(self, request, comment_id, format=None):
+    def post(self, request, image_id, format=None):
 
         user = request.user
 
         try:
-            found_image = models.Image.objects.get(id=comment_id)
+            found_image = models.Image.objects.get(id=image_id)
         except models.Image.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -108,3 +108,21 @@ class DeleteComment(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         except models.Comment.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+class Search(APIView):
+
+    def get(self, request, format=True):
+
+        hashtags = request.query_params.get('hashtags', None)
+
+        if hashtags is not None:
+
+            hashtags = hashtags.split(",")
+            images = models.Image.objects.filter(tags__name__in=hashtags).distinct()
+            serializer = serializers.CountImagesSerializer(images, many=True)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+        else:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
