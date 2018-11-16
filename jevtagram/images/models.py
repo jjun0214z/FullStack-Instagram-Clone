@@ -50,7 +50,8 @@ class Comment(TimeStampedModel):
 
     def __str__(self):
         return self.message
-
+        
+@python_2_unicode_compatible
 class Like(TimeStampedModel):
 
     """ Like Model """
