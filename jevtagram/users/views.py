@@ -49,9 +49,7 @@ class UserProfile(APIView):
             found_user = models.User.objects.get(username=username)
         except models.User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = serializers.UserProfileSerializer(found_user, many=True)
-        print(found_user)
+        serializer = serializers.UserProfileSerializer(found_user)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 class UserFollowers(APIView):
