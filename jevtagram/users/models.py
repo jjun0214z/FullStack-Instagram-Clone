@@ -10,11 +10,11 @@ class User(AbstractUser):
 
     """ User Model """
 
-    GENDER_CHOICES = {
+    GENDER_CHOICES = [
         ('male', 'Male'),
         ('female', 'Female'),
         ('not-speified', 'Not-speified')
-    }
+    ]
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
@@ -32,7 +32,7 @@ class User(AbstractUser):
 
     # def get_absolute_url(self):
     #     return reverse("users:detail", kwargs={"username": self.username})
-    
+
     @property
     def post_count(self):
         return self.images.all().count()
