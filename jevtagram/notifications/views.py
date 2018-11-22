@@ -7,7 +7,7 @@ from . import models, serializers
 
 class Notifications(APIView):
 
-    def get(self, request, format=True):
+    def get(self, request, format=None):
 
         user = request.user
 

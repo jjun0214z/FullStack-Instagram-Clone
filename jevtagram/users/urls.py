@@ -9,5 +9,6 @@ urlpatterns = [
     path("<username>/followers/", view=views.UserFollowers.as_view(), name="user_followers"),
     path("<username>/following/", view=views.UserFollowing.as_view(), name="user_following"),
     path("search/", view=views.Search.as_view(), name="user_search"),
-    path("<username>/", view=views.UserProfile.as_view(), name="user_profile")
+    path("<username>/", view=views.UserProfile.as_view(), name="user_profile"),
+    path("<username>/password/", view=views.ChangePassword.as_view(), name="change_password")
 ]
