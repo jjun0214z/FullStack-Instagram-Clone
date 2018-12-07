@@ -1,6 +1,11 @@
 @import 'reset-css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
+.App {
+
+}
 
 body {
     background-color: $bg-color;
+    font-family: 'Apple SD Gothic Neo', Roboto, arial, sans-serif;
 }
