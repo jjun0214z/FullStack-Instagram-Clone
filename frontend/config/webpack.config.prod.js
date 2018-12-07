@@ -361,6 +361,7 @@ module.exports = {
               sourceMap: shouldUseSourceMap,
               modules: true,
               getLocalIdent: getCSSModuleLocalIdent,
+              camelCase: true,
             }),
           },
           // Opt-in support for SASS. The logic here is somewhat similar
@@ -399,6 +400,7 @@ module.exports = {
                 sourceMap: shouldUseSourceMap,
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
+                camelCase: true,
               },
               {
                 loader: require.resolve('sass-loader'),
