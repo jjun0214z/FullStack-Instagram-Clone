@@ -6,4 +6,3 @@ const Auth = (porps, context) => (
 );
 
 export default Auth;
-
