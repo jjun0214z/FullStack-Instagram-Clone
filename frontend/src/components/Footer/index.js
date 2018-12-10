@@ -17,6 +17,8 @@ const Footer = (props, context) => (
                     <li className={styles.listItem}>Terms</li>
                     <li className={styles.listItem}>Directory</li>
                     <li className={styles.listItem}>Language</li>
+                    <li className={styles.listItem}>Language</li>
+                    <li className={styles.listItem}>Language</li>
                 </ul>
             </nav>
         </div>
