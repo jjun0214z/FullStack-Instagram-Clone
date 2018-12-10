@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from 'components/Footer/style.module.scss';
-import PropTypes from 'prop-types';
 
 const Footer = (props, context) => (
     <footer className={styles.footer}>
@@ -16,8 +15,6 @@ const Footer = (props, context) => (
                     <li className={styles.listItem}>Privacy</li>
                     <li className={styles.listItem}>Terms</li>
                     <li className={styles.listItem}>Directory</li>
-                    <li className={styles.listItem}>Language</li>
-                    <li className={styles.listItem}>Language</li>
                     <li className={styles.listItem}>Language</li>
                 </ul>
             </nav>
