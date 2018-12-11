@@ -75,7 +75,7 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.facebook', #registration
     'rest_framework', # REST framework
     'rest_framework.authtoken',
     'taggit', # Tags for the photos
@@ -272,5 +272,5 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True
-# SOCIALACCOUNT_QUERY_EMAIL = True 미구현
+SOCIALACCOUNT_QUERY_EMAIL = True
 CORS_ORIGIN_ALLOW_ALL = True
