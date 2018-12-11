@@ -1,0 +1,105 @@
+.loginview {
+    width: 100%;
+    max-width: $max-page-width;
+    margin: 120px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .column {
+        width: 50%;
+        .imgList {
+            width: 240px;
+            height: 427px;
+            margin: 100px 0 0 206px;
+            position: relative;
+            li {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .loginArea {
+            padding-left: 30px;
+            .whiteBox {
+                margin-top: 10px;
+                padding: 20px 40px;
+                background-color: #fff;
+                border: 1px solid #e6e6e6;
+                border-radius: 1px;
+                .tit {
+                    display: block;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    font-size: 30px;
+                    line-height: 36px;
+                }
+                fieldset {
+                    .inputSet {
+                        margin-bottom: 15px;
+                        input {
+                            width: 100%;
+                            padding: 10px;
+                            margin-top: 5px;
+                            border: 1px solid #efefef;
+                            border-radius: 3px;
+                            background-color: #fafafa;
+                            display: block;
+                            font-size: small-font-size;
+                            box-sizing: border-box;
+                            &:first-child {margin-top: 0;}
+                        }
+                    }
+                    .btnLogin {
+                        width: 100%;
+                        padding: 10px 5px;
+                        border: none;
+                        box-sizing: border-box;
+                        background: $light-blue;
+                        color: #fff;
+                        border-radius: 5px;
+                    }
+                }
+                .noAccount {
+                    text-align: center;
+                    .btnJoinus {
+                        padding: 0;
+                        border: none;
+                        background: none;
+                        color: $light-blue;
+                    }
+                }
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+            .appDownload {
+                margin-top: 20px;
+                padding: 0 30px;
+                p {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .appBanner {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-left: -5px;
+                    button {
+                        width: 50%;
+                        padding: 0 0 0 5px;
+                        font-size: 0;
+                        border: none;
+                        background: none;
+                    }
+                }
+            }
+        }
+
+        &:first-child {
+            height: 620px;
+            background:url('images/img_device.png') 55px 50% no-repeat;
+        }
+    }
+}
