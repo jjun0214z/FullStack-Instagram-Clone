@@ -26,7 +26,6 @@ const Footer = (props, context) => (
     </footer>
 );
 
-console.dir(Footer);
 Footer.contextTypes = {
     t: Proptypes.func.isRequired
 };
