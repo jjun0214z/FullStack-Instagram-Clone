@@ -59,7 +59,7 @@ const Auth = (porps, context) => (
                                                 <input type="text" placeholder="Username" />
                                                 <input type="password" placeholder="password" />
                                             </div>
-                                            <button className={styles.btnLogin}>로그인</button>
+                                            <button className={styles.btnLogin}>회원가입</button>
                                         </fieldset>
                                     </div>
                                     <div className={styles.whiteBox}>
