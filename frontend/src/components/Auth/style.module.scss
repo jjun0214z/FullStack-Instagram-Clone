@@ -79,10 +79,10 @@
                     .btnFbLogin {
                         color: $facebook-blue;
                         font-size: $small-font-size;
-                        span {
+                        i {
                             margin-right: 5px;
                             display: inline-block;
-                            vertical-align: middle;
+                            vertical-align: baseline;
                         }
                     }
                 }

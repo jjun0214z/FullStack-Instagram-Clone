@@ -1,6 +1,6 @@
 import React from 'react';
-import Ionicon from 'react-ionicons';
 import Proptypes from 'prop-types';
+// import FacebookLogin from 'react-facebook-login'
 import styles from "components/Auth/style.module.scss";
 
 const LoginForm = (props, context) =>(
@@ -27,13 +27,18 @@ const LoginForm = (props, context) =>(
                 <button type="submit" className={styles.btnLogin}>로그인</button>
             </form>
         </fieldset>
-        <div className={styles.facebookLogin}>
+        {/* <div className={styles.facebookLogin}>
             <p>또는</p>
-            <button type="submit" className={styles.btnFbLogin}>
-                <span><Ionicon icon="logo-facebook" fontSize="20px" color="#385185" /></span>
-                Facebook으로 로그인
-            </button>
-        </div>
+            <FacebookLogin
+                appId="2240951062811644"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={props.handleFacebookLogin}
+                cssClass={styles.btnFbLogin}
+                icon="fa-facebook-official"
+                textButton="Facebook으로 로그인"
+            />
+        </div> */}
         <div className={styles.btnArea}>
             <button className={styles.btnForgot}>비밀번호를 잊으셨나요?</button>
         </div>
@@ -44,7 +49,8 @@ LoginForm.propTypes = {
     usernameValue: Proptypes.string.isRequired,
     passwordValue: Proptypes.string.isRequired,
     handleInputChange: Proptypes.func.isRequired,
-    handleSubmit: Proptypes.func.isRequired
+    handleSubmit: Proptypes.func.isRequired,
+    handleFacebookLogin: Proptypes.func.isRequired
 };
 
 export default LoginForm;
