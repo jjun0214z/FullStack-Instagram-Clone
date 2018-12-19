@@ -21,7 +21,6 @@ const Auth = (props, context) => (
                 {props.action === "login" && (
                     <div className={styles.whiteBox}>
                         <p className={styles.noAccount}>
-                            {console.log(props.changeAction)}
                             계정이 없으신가요? <button onClick={props.changeAction} className={styles.btnJoinus}>가입하기</button>
                         </p>
                     </div>
