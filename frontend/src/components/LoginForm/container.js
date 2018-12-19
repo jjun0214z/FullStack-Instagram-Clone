@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import LoginForm from './presenter';
 
-const Container = props => <LoginForm {...props} />
+class Container extends Component {
+    render() {
+        return <LoginForm />;
+    }
+}
 
 export default Container;
