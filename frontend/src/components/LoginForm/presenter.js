@@ -1,15 +1,28 @@
 import React from 'react';
 import Ionicon from 'react-ionicons';
+import Proptypes from 'prop-types';
 import styles from "components/Auth/style.module.scss";
 
 const LoginForm = (props, context) =>(
     <div className={styles.whiteBox}>
         <strong className={styles.tit}>Jevtagram</strong>
         <fieldset>
-            <form>
+            <form onSubmit={props.handleSubmit}>
                 <div className={styles.inputSet}>
-                    <input type="text" placeholder="Tel, Username or email" />
-                    <input type="password" placeholder="password" />
+                    <input 
+                        type="text" 
+                        placeholder="Username" 
+                        value={props.usernameValue}
+                        name="username"
+                        onChange={props.handleInputChange}
+                    />
+                    <input 
+                        type="password" 
+                        placeholder="Password"
+                        value={props.passwordValue}
+                        name="password"
+                        onChange={props.handleInputChange}
+                    />
                 </div>
                 <button type="submit" className={styles.btnLogin}>로그인</button>
             </form>
@@ -27,4 +40,11 @@ const LoginForm = (props, context) =>(
     </div>
 );
  
+LoginForm.propTypes = {
+    usernameValue: Proptypes.string.isRequired,
+    passwordValue: Proptypes.string.isRequired,
+    handleInputChange: Proptypes.func.isRequired,
+    handleSubmit: Proptypes.func.isRequired
+};
+
 export default LoginForm;
