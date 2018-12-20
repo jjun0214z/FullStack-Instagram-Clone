@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import Proptypes from "prop-types";
 import SignupForm from './presenter';
 
 class Container extends Component {
     state = {
         email: "",
-        fullname: "",
+        name: "",
         username: "",
         password: ""
     };
 
+    static propTypes = {
+        createAccount: Proptypes.func.isRequired
+    }
+
     render() {
         const { 
             email,
-            fullname,
+            name,
             username,
             password
         } = this.state;
@@ -20,7 +25,7 @@ class Container extends Component {
         return (
             <SignupForm 
                 emailValue={email}
-                fullnameValue={fullname}
+                nameValue={name}
                 usernameValue={username}
                 passwordValue={password}
                 handleInputChange = {this._handleInputChange}
@@ -36,7 +41,11 @@ class Container extends Component {
         });
     };
     _handleSubmit = event => {
+        const { createAccount } = this.props;
+        const { username, password, email, name } = this.state;
+
         event.preventDefault();
+        createAccount(username, password, email, name);
     };
 }
 
