@@ -1,6 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-// import FacebookLogin from 'react-facebook-login'
+import FacebookLogin from 'react-facebook-login'
 import styles from "components/Auth/style.module.scss";
 
 const LoginForm = (props, context) =>(
@@ -27,7 +27,7 @@ const LoginForm = (props, context) =>(
                 <button type="submit" className={styles.btnLogin}>로그인</button>
             </form>
         </fieldset>
-        {/* <div className={styles.facebookLogin}>
+        <div className={styles.facebookLogin}>
             <p>또는</p>
             <FacebookLogin
                 appId="2240951062811644"
@@ -38,7 +38,7 @@ const LoginForm = (props, context) =>(
                 icon="fa-facebook-official"
                 textButton="Facebook으로 로그인"
             />
-        </div> */}
+        </div>
         <div className={styles.btnArea}>
             <button className={styles.btnForgot}>비밀번호를 잊으셨나요?</button>
         </div>
