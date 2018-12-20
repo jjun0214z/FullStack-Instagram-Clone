@@ -29,7 +29,7 @@ const LoginForm = (props, context) =>(
         </fieldset>
         <div className={styles.facebookLogin}>
             <p>또는</p>
-            <FacebookLogin
+            {/* <FacebookLogin
                 appId="2240951062811644"
                 autoLoad={false}
                 fields="name,email,picture"
@@ -37,7 +37,7 @@ const LoginForm = (props, context) =>(
                 cssClass={styles.btnFbLogin}
                 icon="fa-facebook-official"
                 textButton="Facebook으로 로그인"
-            />
+            /> */}
         </div>
         <div className={styles.btnArea}>
             <button className={styles.btnForgot}>비밀번호를 잊으셨나요?</button>
