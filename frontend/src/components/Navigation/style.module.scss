@@ -1,0 +1,35 @@
+.Navigation {
+    width: 100%;    
+    max-width: $max-page-width;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .column {
+        .logo {
+            a { display: block; }
+        }
+        .searchInput {
+            width: 200px;
+            border: 1px solid $dark-gray;
+            font-size: $normal-font-size;
+            padding: 5px 10px;
+            text-align: center;
+            
+            @include breakpoint(mobileonly){
+                width: auto;
+            }
+        }
+        .naviIcons {
+            display: flex;
+            justify-content: space-between;      
+            align-items: center;
+            .naviIcon {
+                margin-left: 10px;
+                &:first-child {margin-left: 0;}
+            }
+        }
+    }    
+}
