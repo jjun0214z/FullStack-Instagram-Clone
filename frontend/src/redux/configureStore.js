@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { i18nState } from 'redux-i18n';
 import user from 'redux/modules/user';
+import photos from 'redux/modules/photos';
 
 
 
@@ -20,6 +21,7 @@ if (env === 'development') {
 const reducer = combineReducers({
     router: connectRouter(history),
     user,
+    photos,
     i18nState
 });
 
