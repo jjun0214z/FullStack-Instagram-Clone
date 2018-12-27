@@ -1,8 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-//import { Link } from "react-router-dom";
 import styles from "./style.module.scss";
 import Loading from "components/Loading";
+import FeedPhoto from "components/FeedPhoto";
 
 const Feed = (props, context) => {
     if ( props.loading ) {
@@ -20,7 +20,7 @@ const LodingFeed = (props, context) => (
 
 const RenderFeed = (props, context) => (
     <div className={styles.feed}>
-        {props.feed.map(post => post.caption)}
+        {props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}
     </div>
 );
 
