@@ -1,4 +1,17 @@
 import { connect } from 'react-redux';
 import Container from "./container";
+import { actionCreators as photoAction } from 'redux/modules/photos.js';
 
-export default connect()(Container);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleHeartClick: () => {
+            if (ownProps.isLiked) {
+                dispatch(photoAction.unLikePhoto(ownProps.photoId))
+            }else{
+                dispatch(photoAction.likePhoto(ownProps.photoId))
+            }
+        }
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Container);
