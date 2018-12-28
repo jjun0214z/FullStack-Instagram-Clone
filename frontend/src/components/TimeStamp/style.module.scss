@@ -1,14 +1,7 @@
-.photoActions {
-    padding: 10px;
-    .icons {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        .ico {
-            margin-left: 10px;
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-    }    
+.time {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    color: $dark-gray;
+    border-bottom: 1px solid #eee;
 }

@@ -1,14 +1,18 @@
-.photoActions {
-    padding: 10px;
-    .icons {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        .ico {
-            margin-left: 10px;
-            &:first-child {
-                margin-left: 0;
-            }
+.photoComments {
+    margin-bottom: 10px;
+    .photoComment {
+        margin-top: 2px;
+        font-size: 15px;
+        &:first-child {
+            margin-top: 0;
         }
-    }    
+        span {
+            display: inline-block;
+            &.username {
+                font-weight: bold;
+                margin-right: 5px;
+            }
+            .comment{}
+        }
+    }
 }

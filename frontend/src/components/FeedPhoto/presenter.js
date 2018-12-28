@@ -27,7 +27,7 @@ const FeedPhoto = (props, context) => {
                     alt={props.caption} 
                 />
             </div>
-            <div>
+            <div className={styles.photoExtra}>
                 <PhotoActions number={props.like_count} />
                 <PhotoComments 
                     caption={props.caption}

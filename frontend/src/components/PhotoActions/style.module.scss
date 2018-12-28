@@ -1,14 +1,18 @@
 .photoActions {
-    padding: 10px;
+    margin-bottom: 10px;
     .icons {
         margin-bottom: 10px;
         display: flex;
         align-items: center;
-        .ico {
-            margin-left: 10px;
+        .icon {
+            margin-left: 5px;
             &:first-child {
                 margin-left: 0;
             }
         }
-    }    
+    }
+    .txtLike {
+        font-size: 15px;
+        font-weight: bold;
+    }
 }

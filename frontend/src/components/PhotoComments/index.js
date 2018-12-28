@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 import styles from "./style.module.scss";
 
 const PhotoComments = props => (
-    <div>
+    <div className={styles.photoComments}>
         <ul>
             <Comments
                 username={props.creator}
@@ -23,9 +23,9 @@ const PhotoComments = props => (
 );
 
 const Comments = props => (
-    <li>
-        <span>{props.username}</span>
-        <span>{props.comment}</span>
+    <li className={styles.photoComment}>
+        <span className={styles.username}>{props.username}</span>
+        <span className={styles.comment}>{props.comment}</span>
     </li>
 );
 
