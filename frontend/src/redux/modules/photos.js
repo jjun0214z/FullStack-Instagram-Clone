@@ -52,7 +52,7 @@ function likePhoto(photoId){
     return (dispatch, getState) => {
         dispatch(doLikePhoto(photoId));
         const { user : { token } } = getState();
-        fetch(`/images/${photoId}/liked/`, {
+        fetch(`/images/${photoId}/likes/`, {
             method: 'POST',
             headers: {
                 'Authorization': `JWT ${token}`
@@ -72,7 +72,7 @@ function unLikePhoto(photoId){
     return (dispatch, getState) => {
         dispatch(doUnLikePhoto(photoId));
         const { user : { token } } = getState();
-        fetch(`/images/${photoId}/unliked/`, {
+        fetch(`/images/${photoId}/unlikes/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `JWT ${token}`
