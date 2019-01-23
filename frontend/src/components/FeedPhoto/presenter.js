@@ -1,5 +1,5 @@
 import React from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from "./style.module.scss";
 import PhotoActions from 'components/PhotoActions';
 import PhotoComments from 'components/PhotoComments';
@@ -49,35 +49,43 @@ const FeedPhoto = (props, context) => {
                 <UserList 
                     title={"Likes"} 
                     closeLikes={props.closeLikes}
+                    userList={props.likes}
                 />
             )}
         </div>
     );
 };
 
-FeedPhoto.proptypes = {
-    creator: Proptypes.shape({
-        profile_image: Proptypes.string.isRequired, 
-        username: Proptypes.string.isRequired
+FeedPhoto.propTypes = {
+    creator: PropTypes.shape({
+        profile_image: PropTypes.string.isRequired, 
+        username: PropTypes.string.isRequired
     }).isRequired,
-    location: Proptypes.string.isRequired,
-    file: Proptypes.string.isRequired,
-    like_count: Proptypes.number.isRequired,
-    caption: Proptypes.string.isRequired,
-    comments: Proptypes.arrayOf(
-        Proptypes.shape({
-            creator: Proptypes.shape({
-                profile_image: Proptypes.string.isRequired, 
-                username: Proptypes.string.isRequired
+    location: PropTypes.string.isRequired,
+    file: PropTypes.string.isRequired,
+    like_count: PropTypes.number.isRequired,
+    caption: PropTypes.string.isRequired,
+    comments: PropTypes.arrayOf(
+        PropTypes.shape({
+            creator: PropTypes.shape({
+                profile_image: PropTypes.string.isRequired, 
+                username: PropTypes.string.isRequired
             }).isRequired,
-            message: Proptypes.string.isRequired
+            message: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    natural_time: Proptypes.string.isRequired,
-    is_liked: Proptypes.bool.isRequired,
-    seeingLikes: Proptypes.bool.isRequired,
-    closeLikes: Proptypes.func.isRequired,
-    openLikes: Proptypes.func.isRequired
+    natural_time: PropTypes.string.isRequired,
+    is_liked: PropTypes.bool.isRequired,
+    seeingLikes: PropTypes.bool.isRequired,
+    closeLikes: PropTypes.func.isRequired,
+    openLikes: PropTypes.func.isRequired,
+    likes: PropTypes.arrayOf(
+        PropTypes.shape({
+            profile_image: PropTypes.string.isRequired,
+            username: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        }).isRequired
+    )
 }
 
 export default FeedPhoto;

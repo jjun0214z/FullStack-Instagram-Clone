@@ -1,0 +1,28 @@
+.userRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .userInfo {
+        display: flex;
+        align-items: center;
+        .profile {
+            width: 30px;
+            border-radius: 50%;
+            font-size:0;
+        }
+        .name {
+            margin-left: 10px;
+            font-weight: bold
+        }
+    }
+    .btnArea {
+        width: 100px;
+        .button {
+            @include blueButton();
+        }
+    }
+}
