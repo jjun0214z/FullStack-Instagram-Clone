@@ -15,17 +15,22 @@ const UserRow = (props, context) => (
             <p className={styles.name}>{props.user.name}</p>
         </div>
         <div className={styles.btnArea}>
-            <button className={styles.button}>Follow</button>
+            <button className={styles.button} onClick={props.handleClick}>
+                { props.user.following ? 'UnFollow' : 'Follow' }
+            </button>
         </div>
     </div>
 );
 
 UserRow.propTypes = {
     user: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         profile_image: PropTypes.string,
         username: PropTypes.string.isRequired,
-        name: PropTypes.string
+        name: PropTypes.string,
+        following: PropTypes.bool.isRequired,
     }).isRequired,
+    handleClick: PropTypes.func.isRequired
 };
 
 export default UserRow;
