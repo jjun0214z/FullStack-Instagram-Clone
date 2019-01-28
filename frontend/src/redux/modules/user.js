@@ -114,7 +114,7 @@ function createAccount(username, password, email, name){
 function getPhotoLikes(photoId){
     return function(dispatch, getState){
         const { user : { token } } = getState();
-        fetch(`images/${photoId}/likes/`, {
+        fetch(`/images/${photoId}/likes/`, {
             headers: {
                 'Authorization': `JWT ${token}`
             },
@@ -136,7 +136,7 @@ function followUser(userId){
     return (dispatch, getState) => {
         dispatch(setFollowUser(userId));
         const { user : { token } } = getState();
-        fetch(`users/${userId}/follow/`, {
+        fetch(`/users/${userId}/follow/`, {
             method: 'POST',
             headers: {
                 'Authorization': `JWT ${token}`,
@@ -158,7 +158,7 @@ function unfollowUser(userId){
     return (dispatch, getState) => {
         dispatch(setUnfollowUser(userId));
         const { user : { token } } = getState();
-        fetch(`users/${userId}/unfollow/`, {
+        fetch(`/users/${userId}/unfollow/`, {
             method: 'POST',
             headers: {
                 'Authorization': `JWT ${token}`,
@@ -175,6 +175,29 @@ function unfollowUser(userId){
         .catch(err => console.log(err));
     }
 }
+
+function getExplore(userId){
+    return (dispatch, getState) => {
+        const { user : { token } } = getState();
+        fetch(`/users/explore/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `JWT ${token}`
+            },
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout());
+            }
+            return response.json();
+        })
+        .then(json => {
+            dispatch(setUserList(json));
+        })
+        .catch(err => console.log(err));
+    }
+}
+
 
 // initial state
 const initialState = {
@@ -259,7 +282,8 @@ const actionCreators = {
     logout,
     getPhotoLikes,
     followUser,
-    unfollowUser
+    unfollowUser,
+    getExplore
 };
 
 export { actionCreators };
